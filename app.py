@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import joblib
+import tensorflow as tf
 from tensorflow.keras.models import load_model
 
 # ─── PAGE CONFIG ───────────────────────────────────────────────
@@ -56,40 +57,12 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Dense, Dropout
-
-def build_model():
-    input_layer = Input(shape=(187,))
-
-    x = Dense(128, activation='relu')(input_layer)
-    x = Dropout(0.2)(x)
-
-    x = Dense(64, activation='relu')(x)
-    x = Dropout(0.2)(x)
-
-    x = Dense(32, activation='relu')(x)
-
-    x = Dense(64, activation='relu')(x)
-    x = Dropout(0.2)(x)
-
-    x = Dense(128, activation='relu')(x)
-
-    output_layer = Dense(187, activation='sigmoid')(x)
-
-    model = Model(inputs=input_layer, outputs=output_layer)
-    return model
 # ─── LOAD MODEL ────────────────────────────────────────────────
 @st.cache_resource
 def load_artifacts():
-    model = build_model()
-
-    # 🔥 Load ONLY weights (this avoids all errors)
-    model.load_weights("ecg_autoencoder.keras")
-
-    scaler = joblib.load("scaler.pkl")
+    model     = load_model("ecg_autoencoder.keras")
+    scaler    = joblib.load("scaler.pkl")
     threshold = joblib.load("threshold.pkl")
-
     return model, scaler, threshold
 
 model, scaler, threshold = load_artifacts()
