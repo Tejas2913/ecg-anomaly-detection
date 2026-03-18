@@ -4,8 +4,8 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import joblib
-import tensorflow as tf
-from tensorflow.keras.models import load_model
+from keras.models import load_model
+import keras
 
 # ─── PAGE CONFIG ───────────────────────────────────────────────
 st.set_page_config(

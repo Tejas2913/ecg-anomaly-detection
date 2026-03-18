@@ -6,4 +6,3 @@ plotly
 joblib
 scikit-learn
 keras
-tensorflow==2.15.0
