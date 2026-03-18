@@ -59,8 +59,8 @@ st.markdown("""
 # ─── LOAD MODEL ────────────────────────────────────────────────
 @st.cache_resource
 def load_artifacts():
-    model = load_model("ecg_autoencoder.keras", compile=False)
-    scaler    = joblib.load("scaler.pkl")
+    model = load_model("model.h5", compile=False) 
+    scaler = joblib.load("scaler.pkl")
     threshold = joblib.load("threshold.pkl")
     return model, scaler, threshold
 
