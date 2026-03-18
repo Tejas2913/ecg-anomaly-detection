@@ -1,4 +1,12 @@
-# ECG Anomaly Detection using Autoencoders
+# streamlit
+
+numpy
+pandas
+matplotlib
+plotly
+joblib
+scikit-learn
+tensorflow==2.15.0ECG Anomaly Detection using Autoencoders
 
 An unsupervised deep learning system that detects abnormal heartbeats
 from ECG signals using a Dense Autoencoder — trained exclusively on
