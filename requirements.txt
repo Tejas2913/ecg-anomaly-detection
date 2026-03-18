@@ -1,8 +1,8 @@
 streamlit
-tensorflow
-scikit-learn
 numpy
 pandas
 matplotlib
 plotly
 joblib
+scikit-learn
+tensorflow-cpu
